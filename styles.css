@@ -175,3 +175,9 @@ body{
   .nav{ display: none; }
   .cta{ padding: 8px 12px; }
 }
+.logo-img{
+  height:8px; /* ajuste o tamanho */
+  width:auto;
+  display:block;
+  filter: drop-shadow(0 0 8px rgba(150,0,255,0.4)); /* brilho opcional */
+}
