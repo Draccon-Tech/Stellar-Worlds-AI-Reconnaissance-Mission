@@ -175,20 +175,31 @@ body{
   .nav{ display: none; }
   .cta{ padding: 8px 12px; }
 }
-/* Container da logo */
 .logo {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* garante alinhamento à esquerda */
+  justify-content: flex-start;
   text-decoration: none;
 }
 
 /* A imagem da logo */
 .logo-img {
-  height: 64px;   /* ajuste o tamanho da logo aqui */
-  width: auto;    /* mantém proporção */
+  height: 44px;       /* tamanho médio (bom equilíbrio) */
+  width: auto;        /* mantém proporção natural */
   display: block;
   object-fit: contain;
-  margin-left: 0; /* garante que encoste na esquerda */
-  filter: drop-shadow(0 0 6px rgba(150, 0, 255, 0.3)); /* brilho sutil opcional */
+  margin-left: 0;
+  filter: drop-shadow(0 0 8px rgba(150, 0, 255, 0.4)); /* brilho suave */
 }
+
+/* Para ajustar o espaçamento da barra */
+.topbar {
+  height: 72px;               /* ligeiramente mais alta */
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(6px);
+  background: transparent;
+}
+
