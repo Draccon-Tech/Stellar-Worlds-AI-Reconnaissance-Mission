@@ -175,9 +175,20 @@ body{
   .nav{ display: none; }
   .cta{ padding: 8px 12px; }
 }
-.logo-img{
-  height:8px; /* ajuste o tamanho */
-  width:auto;
-  display:block;
-  filter: drop-shadow(0 0 8px rgba(150,0,255,0.4)); /* brilho opcional */
+/* Container da logo */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* garante alinhamento à esquerda */
+  text-decoration: none;
+}
+
+/* A imagem da logo */
+.logo-img {
+  height: 28px;   /* ajuste o tamanho da logo aqui */
+  width: auto;    /* mantém proporção */
+  display: block;
+  object-fit: contain;
+  margin-left: 0; /* garante que encoste na esquerda */
+  filter: drop-shadow(0 0 6px rgba(150, 0, 255, 0.3)); /* brilho sutil opcional */
 }
