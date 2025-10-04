@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>S.W.A.R.M</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAV BAR TRANSPARENTE -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <!-- LOGO: troque por <img src="assets/logo.svg" alt="SWARM" class="logo-img" /> se tiver um arquivo -->
+      <a class="logo" href="#" aria-label="Página inicial">
+        <span class="logo-mark">⟡</span> SWARM
+      </a>
+      <nav class="nav">
+        <a href="#" class="nav__link">Home</a>
+        <a href="#" class="nav__link">Swarm</a>
+        <a href="#" class="nav__link">About Us</a>
+      </nav>
+    </div>
+    <div class="topbar__right">
+      <button class="cta" id="ctaJoin">JOIN THE SWARM</button>
+    </div>
+  </header>
+
+  <!-- FUNDO -->
+  <div class="starfield" aria-hidden="true">
+    <div class="bg"></div>
+    <canvas id="stars"></canvas>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- PLANETAS CLICÁVEIS -->
+  <main class="scene" id="scene" aria-label="Mapa estelar interativo">
+    <!-- Exemplo de 4 planetas. Ajuste posição com style="--x:%; --y:%;" -->
+    <button class="planet planet--small" style="--x: 18%; --y: 62%;" 
+            data-name="Nyx-7" data-info="Ponto de escuta do enxame • setor 18">
+      <span class="sr-only">Planeta Nyx-7</span>
+    </button>
+
+    <button class="planet planet--medium" style="--x: 45%; --y: 38%;" 
+            data-name="Eir-Prime" data-info="Nó central da HiveMind">
+      <span class="sr-only">Planeta Eir-Prime</span>
+    </button>
+
+    <button class="planet planet--large" style="--x: 72%; --y: 68%;" 
+            data-name="Violet Crown" data-info="Santuário arcano">
+      <span class="sr-only">Planeta Violet Crown</span>
+    </button>
+
+    <button class="planet planet--ring" style="--x: 82%; --y: 28%;" 
+            data-name="Aurora-∆" data-info="Porta de salto • Setor 0xA">
+      <span class="sr-only">Planeta Aurora-Delta</span>
+    </button>
+  </main>
+
+  <!-- TOOLTIP / HUD -->
+  <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+
+  <!-- MODAL JOIN -->
+  <dialog id="joinModal" class="modal">
+    <form method="dialog" class="modal__card">
+      <h2>Join the Swarm</h2>
+      <p>Conecte-se ao enxame para receber convites de missão.</p>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" placeholder="você@dominio.com" required />
+      </label>
+      <menu class="actions">
+        <button value="cancel" class="ghost">Fechar</button>
+        <button value="submit" class="primary">Entrar</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
