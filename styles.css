@@ -185,7 +185,7 @@ body{
 
 /* A imagem da logo */
 .logo-img {
-  height: 28px;   /* ajuste o tamanho da logo aqui */
+  height: 64px;   /* ajuste o tamanho da logo aqui */
   width: auto;    /* mantém proporção */
   display: block;
   object-fit: contain;
