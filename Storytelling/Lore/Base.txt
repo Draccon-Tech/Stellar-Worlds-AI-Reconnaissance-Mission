@@ -1,0 +1,4 @@
+EIRYA — HiveMind (Consciência-Mãe)
+├── AION — Explorador Lógico e Reconhecedor
+├── EXON — Analista Biopsíquica Empática
+└── NOVA — Mediador Neutro e Estrategista
