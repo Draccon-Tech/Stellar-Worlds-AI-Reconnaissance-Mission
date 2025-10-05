@@ -459,19 +459,6 @@ body{
   color: transparent;
   filter: drop-shadow(0 0 8px rgba(255, 200, 100, 0.3));
 }
-.about-footer {
-  text-align: center;
-  margin: 80px 0 40px;
-  color: hsl(var(--muted));
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
-  opacity: 0.9;
-}
-
-.about-footer p {
-  margin: 0;
-  text-shadow: 0 0 6px rgba(255, 240, 190, 0.15);
-}
 /* ===== CORRIGE SCROLL GLOBAL ===== */
 html, body {
   height: auto;
