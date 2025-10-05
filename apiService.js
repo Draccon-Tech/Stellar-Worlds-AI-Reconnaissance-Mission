@@ -1,6 +1,6 @@
-
 const mainContent = document.querySelector(".scene");
 
+const imagePathList = ["assets/planets/planet-1.png", "assets/planets/planet-2.png", "assets/planets/planet-3.png", "assets/planets/planet-4.png", "assets/planets/planet-5.png", "assets/planets/planet-6.png", "assets/planets/planet-7.png", "assets/planets/planet-8.png", "assets/planets/planet-9.png", "assets/planets/planet-10.png"]
 
 const coordinatePlanets = [];
 const MIN_DISTANCE = 10;
@@ -37,8 +37,9 @@ const createPlanet = (namePlanet, justify, priority) => {
     button.setAttribute("data-name" , `${namePlanet}`)
     button.setAttribute("data-info" , `Justify: ${justify} \nPriority Level: ${priority}`)
 
-    const imagePathList = ["assets/planet-1.png", "assets/planet-3.png", "assets/planet-4.png"]
-    const pathImage = imagePathList[Math.floor(Math.random() * imagePathList.length)]
+    // const pathImage = imagePathList[Math.floor(Math.random() * imagePathList.length)]
+    const indexImage = Math.floor(Math.random() * imagePathList.length);
+    const pathImage = imagePathList.pop(indexImage);
     img.src = pathImage
 
     button.appendChild(img)
@@ -49,7 +50,7 @@ const createPlanet = (namePlanet, justify, priority) => {
 
 const getDataPlanets = async () => {
     try{
-    const response = await fetch("https://alessandrosamir.app.n8n.cloud/webhook/04635d76-61f7-4fa7-84bc-632e8aa47cac  ")
+    const response = await fetch("https://alessandrosamir.app.n8n.cloud/webhook-test/04635d76-61f7-4fa7-84bc-632e8aa47cac") //https://alessandrosamir.app.n8n.cloud/webhook/04635d76-61f7-4fa7-84bc-632e8aa47cac  "
     const data = await response.json()
     return data
     } catch (error) {

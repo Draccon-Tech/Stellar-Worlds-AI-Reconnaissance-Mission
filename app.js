@@ -109,3 +109,17 @@ document.getElementById('joinModal').addEventListener('click', (e)=>{
   slider.addEventListener('input', calc);
   calc();
 })();
+
+/* TEAM INTERACTIVITY — optional hover or animation */
+document.addEventListener('DOMContentLoaded', () => {
+  const members = document.querySelectorAll('.member-card');
+
+  members.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      card.classList.add('active');
+    });
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('active');
+    });
+  });
+});
