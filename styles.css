@@ -515,3 +515,32 @@ main{
   height: 18px;
   fill: #f0e8d8;
 }
+/* ===== ANIMAÇÃO DE ROTAÇÃO SUAVE DOS PLANETAS ===== */
+@keyframes spinPlanet {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.planet {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease-out;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 100, 0.25));
+}
+
+.planet:hover {
+  transform: translate(-50%, -50%) scale(1.07);
+}
+
+.planet img {
+  width: clamp(48px, 6vw, 120px);
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform;
+}
+
