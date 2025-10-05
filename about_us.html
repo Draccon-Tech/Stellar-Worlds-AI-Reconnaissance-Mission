@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SWARM • About Us</title>
+  <title>About Us • Draccon Tech</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,19 +12,116 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
   <link rel="manifest" href="./assets/site.webmanifest">
+  <style>
+    /* HERO FIX */
+    .about-hero {
+      margin-top: 120px; /* empurra abaixo da navbar */
+      text-align: center;
+      padding: 0 clamp(16px, 4vw, 48px);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: hsl(var(--text));
+      animation: fadeUp 1.2s ease-out forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .about-hero h1 {
+      font-size: clamp(32px, 4vw, 56px);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #d9a441, #fef5d0);
+      -webkit-background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 8px rgba(255, 200, 100, 0.3));
+      margin-bottom: 20px;
+    }
+
+    .about-hero .lead {
+      font-size: 1.2rem;
+      color: hsl(var(--muted));
+      line-height: 1.6;
+    }
+
+    /* SECTIONS */
+    .about-section {
+      max-width: 1000px;
+      margin: 80px auto;
+      padding: 0 24px;
+      color: #f0e8d8;
+    }
+
+    .about-section h2 {
+      font-size: 1.8rem;
+      color: #ffd980;
+      margin-bottom: 12px;
+    }
+
+    .about-section ul {
+      list-style: disc;
+      padding-left: 24px;
+    }
+
+    .ia-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .ia-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 18px;
+      backdrop-filter: blur(4px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ia-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 24px rgba(255, 217, 128, 0.25);
+    }
+
+    .ia-card h3 {
+      color: #cba7ff;
+      margin-bottom: 6px;
+    }
+
+    .ia-card:nth-child(2) h3 { color: #ff7f85; }
+    .ia-card:nth-child(3) h3 { color: #9fc1ff; }
+    .ia-card:nth-child(4) h3 { color: #ffeaa3; }
+
+    .about-footer {
+      text-align: center;
+      margin: 60px 0;
+      color: hsl(var(--muted));
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 
 <body>
   <!-- NAV BAR -->
   <header class="topbar">
     <div class="topbar__left">
-      <a class="logo" href="manifesto.html" aria-label="SWARM Manifesto">
+      <a class="logo" href="index.html" aria-label="Homepage">
         <img src="./assets/logo-img.png" alt="SWARM" class="logo-img">
       </a>
       <nav class="nav">
         <a href="index.html" class="nav__link">Home</a>
         <a href="swarm.html" class="nav__link">Swarm</a>
-        <a href="about_us.html" class="nav__link active">About Us</a>
+        <a href="about_us.html" class="nav__link">About Us</a>
       </nav>
     </div>
     <div class="topbar__right">
@@ -32,164 +129,75 @@
     </div>
   </header>
 
-  <!-- BACKGROUND -->
+  <!-- FUNDO -->
   <div class="starfield" aria-hidden="true">
     <div class="bg"></div>
     <canvas id="stars"></canvas>
     <div class="vignette"></div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <main class="about-center">
+  <!-- HERO -->
+  <section class="about-hero">
+    <h1>We are <span class="brand">Draccon Tech</span></h1>
+    <p class="lead">
+      A multidisciplinary team participating in the Hackathon.  
+      We built <strong>SWARM</strong> — an autonomous AI ecosystem designed to 
+      <em>explore exoplanets</em>, <em>secure communications</em>, and <em>synchronize knowledge</em> 
+      with near-zero latency across deep space.
+    </p>
+  </section>
 
-    <!-- HERO -->
-    <section class="about-hero">
-      <h1>We are <span class="brand">Draccon Tech</span></h1>
-      <p class="lead">
-        A multidisciplinary team participating in the Hackathon.  
-        We built <strong>SWARM</strong> — an autonomous AI ecosystem designed to 
-        <em>explore exoplanets</em>, <em>secure communications</em>, and <em>synchronize knowledge</em> 
-        with near-zero latency across deep space.
-      </p>
-    </section>
+  <!-- MISSION -->
+  <section class="about-section">
+    <h2>Our Mission</h2>
+    <ul>
+      <li>Transform stellar signals into actionable knowledge in near real time.</li>
+      <li>Bridge data science, engineering, and design for responsible exploration.</li>
+      <li>Reduce latency through autonomous edge computation and intelligent mediation.</li>
+    </ul>
+  </section>
 
-    <!-- MISSION -->
-    <section class="about-card">
-      <h2>Our Mission</h2>
-      <ul class="value-list">
-        <li>Transform stellar signals into actionable knowledge in near real time.</li>
-        <li>Bridge data science, engineering, and design for responsible exploration.</li>
-        <li>Reduce latency through autonomous edge computation and intelligent mediation.</li>
-      </ul>
-    </section>
-
-    <!-- WHAT IS SWARM -->
-    <section class="about-card">
-      <h2>What is SWARM</h2>
-      <p>SWARM operates as a mesh of four artificial intelligences, working in harmony as a single collective mind:</p>
-      <div class="roles-grid">
-        <article class="role aion">
-          <h3>AION</h3>
-          <p>Exploration & Catalog — spectral scans, mapping, and planetary prioritization.</p>
-        </article>
-        <article class="role exon">
-          <h3>EXON</h3>
-          <p>Security & Self-Heal — adaptive firewall, data integrity, and noise correction.</p>
-        </article>
-        <article class="role nova">
-          <h3>NOVA</h3>
-          <p>Mediation & Routing — optimizes traffic, minimizes round-trip latency, and sends logs to base.</p>
-        </article>
-        <article class="role eirya">
-          <h3>EIRYA</h3>
-          <p>Core & Backbone — network server, model distributor, and global state synchronizer.</p>
-        </article>
+  <!-- SWARM OVERVIEW -->
+  <section class="about-section">
+    <h2>What is SWARM</h2>
+    <p>
+      SWARM operates as a mesh of four artificial intelligences, working in harmony as a single collective mind:
+    </p>
+    <div class="ia-grid">
+      <div class="ia-card">
+        <h3>AION</h3>
+        <p>Exploration & Catalog — spectral scans, mapping, and planetary prioritization.</p>
       </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="about-card">
-      <h2>How it Works</h2>
-      <ol class="timeline">
-        <li><span>1.</span> <strong>Detection (AION):</strong> Scans systems, identifies candidates, and builds dossiers.</li>
-        <li><span>2.</span> <strong>Protection (EXON):</strong> Validates packets, filters anomalies, and self-corrects errors.</li>
-        <li><span>3.</span> <strong>Routing (NOVA):</strong> Decides what stays at the edge, compresses data, and optimizes communication paths.</li>
-        <li><span>4.</span> <strong>Consensus (EIRYA):</strong> Consolidates knowledge, version-controls models, and replicates the swarm’s neural network.</li>
-      </ol>
-    </section>
-
-    <!-- WHY IT MATTERS -->
-    <section class="about-card">
-      <h2>Why it Matters</h2>
-      <ul class="value-list">
-        <li><strong>Lower latency:</strong> Decisions occur closer to the source, reducing communication delay.</li>
-        <li><strong>Higher resilience:</strong> Secure data transmission even under cosmic radiation or noise.</li>
-        <li><strong>Scalable intelligence:</strong> Multiple nodes operate in parallel, synchronized through EIRYA.</li>
-        <li><strong>Open science:</strong> Transparent trails, reproducible data, and accessible insights.</li>
-      </ul>
-    </section>
-
-    <!-- TEAM -->
-    <section class="about-card">
-      <h2>Team Draccon Tech (Hackathon)</h2>
-      <div class="team-grid">
-        <article class="member">
-          <img src="./assets/team/draccon.jpg" alt="Draccon" class="avatar" />
-          <h3>Draccon</h3>
-          <p class="role">Founder / Lead Engineer</p>
-          <p class="bio">Architect of SWARM, front-end design, AI integration, and UX systems.</p>
-          <div class="links">
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
-          </div>
-        </article>
-
-        <article class="member">
-          <img src="./assets/team/member-2.jpg" alt="Member 2" class="avatar" />
-          <h3>Member 2</h3>
-          <p class="role">Data & Infrastructure</p>
-          <p class="bio">NASA ingestion pipelines and exoplanet telemetry processing.</p>
-          <div class="links">
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
-          </div>
-        </article>
-
-        <article class="member">
-          <img src="./assets/team/member-3.jpg" alt="Member 3" class="avatar" />
-          <h3>Member 3</h3>
-          <p class="role">Security & Ops</p>
-          <p class="bio">EXON layer: adaptive firewall and self-repair architecture.</p>
-          <div class="links">
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
-          </div>
-        </article>
-
-        <article class="member">
-          <img src="./assets/team/member-4.jpg" alt="Member 4" class="avatar" />
-          <h3>Member 4</h3>
-          <p class="role">Research & Design</p>
-          <p class="bio">NOVA routing visualization, storytelling, and system cohesion.</p>
-          <div class="links">
-            <a href="#">Dribbble</a>
-            <a href="#">LinkedIn</a>
-          </div>
-        </article>
+      <div class="ia-card">
+        <h3>EXON</h3>
+        <p>Security & Self-Heal — adaptive firewall, data integrity, and noise correction.</p>
       </div>
-      <p class="micro muted">Team images stored in <code>/assets/team/</code>.</p>
-    </section>
-
-    <!-- TIMELINE -->
-    <section class="about-card">
-      <h2>Hackathon Timeline</h2>
-      <ol class="timeline">
-        <li><span>Day 1</span> — Concept, architecture, and visual prototype.</li>
-        <li><span>Day 2</span> — NOVA minimap and latency simulation.</li>
-        <li><span>Day 3</span> — NASA API integration and exoplanet cards.</li>
-        <li><span>Day 4+</span> — Refinements, multilingual support, and deploy.</li>
-      </ol>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="about-card contact">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <a class="contact-pill" href="mailto:hello@draccon.tech">hello@draccon.tech</a>
-        <a class="contact-pill" href="#" target="_blank">GitHub</a>
-        <a class="contact-pill" href="#" target="_blank">LinkedIn</a>
-        <a class="contact-pill" href="#" target="_blank">Twitter/X</a>
+      <div class="ia-card">
+        <h3>NOVA</h3>
+        <p>Mediation & Routing — optimizes traffic, minimizes round-trip latency, and sends logs to base.</p>
       </div>
-    </section>
+      <div class="ia-card">
+        <h3>EIRYA</h3>
+        <p>Core & Backbone — network server, model distributor, and global state synchronizer.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- CTA -->
-    <section class="swarm-cta">
-      <button class="cta xl" id="joinNow">Join the Mission</button>
-      <p class="micro muted">Receive field reports and new exoplanet catalogs.</p>
-    </section>
-
-  </main>
+  <!-- WORKFLOW -->
+  <section class="about-section">
+    <h2>How It Works</h2>
+    <ol>
+      <li><strong>Detection (AION):</strong> Scans systems, identifies candidates, and builds dossiers.</li>
+      <li><strong>Protection (EXON):</strong> Validates packets, filters anomalies, and self-corrects errors.</li>
+      <li><strong>Routing (NOVA):</strong> Decides what stays at the edge, compresses data, and optimizes communication paths.</li>
+      <li><strong>Consensus (EIRYA):</strong> Consolidates knowledge, version-controls models, and replicates the swarm’s neural network.</li>
+    </ol>
+  </section>
 
   <script src="app.js"></script>
+  <script src="app.js"></script>
+  <footer class="about-footer">
+    <p>© 2025 Draccon Tech — Built for the Hackathon • S.W.A.R.M Initiative</p>
+  </footer>
 </body>
 </html>

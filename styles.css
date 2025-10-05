@@ -428,3 +428,47 @@ body{
   text-align: center;
   padding: 0 clamp(16px, 4vw, 48px);
 }
+.about-hero {
+  margin-top: 120px; /* distância ideal pra compensar a navbar */
+  text-align: center;
+  padding: 0 clamp(16px, 4vw, 48px);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: hsl(var(--text));
+  animation: fadeUp 1.2s ease-out forwards;
+}
+
+/* animação suave opcional */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.about-hero h1 {
+  font-size: clamp(32px, 4vw, 56px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #d9a441, #fef5d0);
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 8px rgba(255, 200, 100, 0.3));
+}
+.about-footer {
+  text-align: center;
+  margin: 80px 0 40px;
+  color: hsl(var(--muted));
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+}
+
+.about-footer p {
+  margin: 0;
+  text-shadow: 0 0 6px rgba(255, 240, 190, 0.15);
+}
