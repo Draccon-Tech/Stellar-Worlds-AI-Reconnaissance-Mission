@@ -44,18 +44,25 @@
     <!-- HERO -->
     <section class="swarm-hero">
       <h1>Autonomous Exoplanet Exploration</h1>
-      <p class="lead">AION, EXON, NOVA, and EIRYA operate as an intelligent low-latency swarm — detecting, analyzing, protecting, and synchronizing knowledge in near real-time across deep space.</p>
+      <p class="lead">
+        AION, EXON, NOVA, and EIRYA operate as an intelligent low-latency swarm — detecting, analyzing,
+        protecting, and synchronizing knowledge in near real-time across deep space.
+      </p>
     </section>
 
     <!-- DIAGRAMA DA REDE SWARM -->
     <section class="swarm-card">
       <h2>How SWARM Communicates</h2>
-      <p class="muted">EIRYA (core/server) orchestrates the entire mesh. NOVA mediates communication and minimizes round-trip latency.; AION explores, scans, and catalogs planetary environments.; EXON safeguards the network, acting as a firewall and self-correcting layer against external anomalies. The pulsing arrows represent the continuous flow of information — the living circulation of the Swarm’s collective mind.</p>
+      <p class="muted">
+        EIRYA (core/server) orchestrates the entire mesh. NOVA mediates communication and minimizes
+        round-trip latency; AION explores, scans, and catalogs planetary environments; EXON safeguards
+        the network, acting as a firewall and self-correcting layer against external anomalies.
+        The pulsing arrows represent the continuous flow of information — the living circulation of the
+        Swarm’s collective mind.
+      </p>
 
       <div class="mesh-wrap">
-        <!-- SVG do grafo com pulsos -->
         <svg class="mesh" viewBox="0 0 600 380" role="img" aria-label="Rede entre AION, EXON, NOVA e EIRYA">
-          <!-- links -->
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%"  stop-color="rgba(255,220,150,0.1)"/>
@@ -85,10 +92,17 @@
           <circle cx="300" cy="310" r="44" class="node nova"/>
           <text x="300" y="315" class="label">NOVA</text>
           <text x="300" y="335" class="sublabel">Mediator</text>
+        </svg>
+      </div>
+    </section>
+  </main>
 
-          <!-- arestas (dupla via) -->
-          <g class="edges">
-            <line x1="300" y1="190" x2="140" y2="90"  class="edge"/>
-            <line x1="140" y1="90"  x2="300" y2="190" class="edge" marker-end="url(#arrow)"/>
-            <line x1="300" y1="190" x2="460" y2="90"  class="edge"/>
-            <
+  <!-- JS -->
+  <script src="app.js"></script>
+
+  <!-- FOOTER -->
+  <footer class="about-footer">
+    <p>© 2025 Draccon Tech — Built for the Hackathon • S.W.A.R.M Initiative</p>
+  </footer>
+</body>
+</html>
