@@ -199,226 +199,45 @@ body{
   background: transparent;
 }
 
-.manifesto-wrap{
+/* ===== Texto central sem pedra ===== */
+.manifesto-center{
   position: relative;
-  z-index: 10;              /* acima do fundo */
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: clamp(24px, 4vw, 56px);
-}
-
-.stone{
-  position: relative;       /* cria contexto para z-index filhos */
-  width: min(1100px, 90vw);
-  display: grid;
-  place-items: center;
-}
-
-.stone-bg{                  /* a rocha fica ATRÁS */
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  z-index: 0;
-  opacity: 0.95;            /* opcional */
-  filter: brightness(.9) contrast(1.05);
-}
-
-.inscription{               /* o texto fica NA FRENTE */
-  position: relative;
-  z-index: 5;
-  width: 78%;
-  max-height: 72vh;
-  overflow: auto;
-  padding: clamp(16px, 2.5vw, 28px);
-  color: #f4e8c9;           /* legível */
-  text-shadow: 0 0 8px rgba(0,0,0,.75);
-  background: rgba(0,0,0,.28);    /* vidro sutil p/ contraste */
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 12px;
-  backdrop-filter: blur(3px);
-}
-
-.inscription h1{
-  margin: 0 0 .6rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-size: clamp(20px, 2.2vw + 10px, 36px);
-}
-
-/* ==== PATCH MANIFESTO: visibilidade do texto sobre a rocha ==== */
-
-/* 1) Garanta que a seção toda fica acima de qualquer coisa do fundo */
-.manifesto-wrap { z-index: 20 !important; }
-
-/* 2) Crie um stacking context alto para a pedra e para o texto */
-.stone {
-  position: relative;
-  z-index: 21;            /* acima do starfield e canvases */
-  isolation: isolate;     /* evita blend estranho vindo do fundo */
-}
-
-/* 3) A rocha fica atrás, sem capturar blend do texto */
-.stone-bg{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  z-index: 0;
-  opacity: .95;
-  filter: brightness(.85) contrast(1.1);
-  pointer-events: none;          /* não intercepta clique/scroll */
-  mix-blend-mode: normal !important;
-}
-
-/* 4) O TEXTO fica realmente por cima e com contraste garantido */
-.inscription{
-  position: relative;
-  z-index: 5;                     /* acima da pedra */
-  width: 78%;
-  max-height: 72vh;
-  overflow: auto;
-  padding: clamp(18px, 2.6vw, 32px);
-
-  /* contraste e legibilidade */
-  color: #f7edd1;
-  text-shadow: 0 2px 10px rgba(0,0,0,.85);
-  background: linear-gradient(
-      to bottom,
-      rgba(0,0,0,.42),
-      rgba(0,0,0,.34)
-  );                               /* “vidro” mais forte */
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 14px;
-  backdrop-filter: blur(4px);
-
-  /* evitar que blends do fundo apaguem o texto */
-  mix-blend-mode: normal !important;
-  opacity: 1 !important;
-}
-
-.inscription h1{
-  margin: 0 0 .7rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-size: clamp(20px, 2.4vw + 10px, 40px);
-  color: #ffefc2;
-  text-shadow: 0 2px 14px rgba(0,0,0,.9);
-}
-/* ===== Layout básico p/ a versão entalhada ===== */
-.manifesto-engraved{
-  position: relative;
-  z-index: 20;
+  z-index: 15;                 /* acima do anel e do fundo */
   min-height: calc(100vh - 72px);
-  margin-top: 72px; /* espaço da topbar */
+  margin-top: 72px;            /* altura da topbar */
   display: grid;
   place-items: center;
-  padding: clamp(16px, 3vw, 40px);
+  padding: clamp(16px, 4vw, 48px);
 }
 
-.stone{
-  position: relative;
-  width: min(1200px, 92vw);
-  aspect-ratio: 16/9;
-  display: grid;
-  place-items: center;
-  isolation: isolate; /* evita blends do fundo afetarem o texto */
-  filter: drop-shadow(0 30px 60px rgba(0,0,0,.55));
+.manifesto-card{
+  --card-bg: 0 0% 0% / .38;
+  max-width: 72ch;
+  max-height: 78vh;
+  overflow: auto;
+  color: #f6ead1;
+  background: hsl(var(--card-bg));
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  padding: clamp(18px, 3vw, 28px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.45);
+  text-shadow: 0 1px 8px rgba(0,0,0,.75);
 }
 
-.stone-bg{
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: contain;
-  z-index: 0;
-  filter: brightness(.9) contrast(1.08);
+.manifesto-head h1{
+  margin: 0 0 .35rem;
+  font-size: clamp(26px, 2.6vw + 12px, 44px);
+  letter-spacing: .08em;
+}
+.manifesto-head .subtitle{
+  margin: 0 0 1rem; color:#cebfa0; font-size:.95rem;
+}
+
+/* Canvas do anel de meteoritos (fica atrás do texto) */
+#meteorRing{
+  position: fixed;
+  inset: 0;
+  z-index: 10;       /* abaixo do .manifesto-center (15), acima do fundo (-2) */
   pointer-events: none;
 }
-
-/* ===== Texto talhado (baixo-relevo) ===== */
-.engrave{
-  position: relative;
-  z-index: 5;                   /* acima da rocha */
-  width: clamp(520px, 70%, 860px);
-  max-height: 78%;
-  overflow: auto;
-  padding: clamp(8px, 1.6vw, 16px);
-  /* Integra o texto com a pedra */
-  mix-blend-mode: multiply;
-}
-
-.engrave h1, .engrave h2, .engrave h3,
-.engrave p, .engrave li, .engrave blockquote{
-  color: #d7c59f;              /* “poeira” da pedra */
-  line-height: 1.6;
-  /* baixo-relevo: vinco escuro + ressalto claro */
-  text-shadow:
-      1px  1px 0 rgba(0,0,0,.55),
-     -1px -1px 0 rgba(255,230,170,.14);
-}
-
-/* hierarquia */
-.engrave h1{
-  text-align: center;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  font-size: clamp(22px, 2.6vw + 10px, 40px);
-  margin: 0 0 .75rem;
-}
-.engrave h2{
-  margin: 1rem 0 .35rem;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  font-size: clamp(16px, 1.2vw + 10px, 22px);
-}
-.engrave h3{
-  margin: .8rem 0 .2rem;
-  font-size: clamp(15px, 1vw + 9px, 20px);
-}
-.engrave p{ margin: .4rem 0 .7rem; }
-
-.engrave blockquote{
-  margin: .35rem 0 .8rem;
-  padding-left: .9rem;
-  border-left: 3px solid rgba(215,197,159,.45);
-  font-style: italic;
-}
-
-.engrave .oath{
-  border-left-color: rgba(255,220,160,.6);
-}
-
-/* listas */
-.engrave .meta{
-  list-style: none;
-  padding: 0;
-  margin: .2rem 0 .9rem;
-  display: grid;
-  gap: .2rem;
-}
-.engrave .meta.numbered{
-  list-style: decimal;
-  padding-left: 1.1rem;
-}
-.engrave .meta.numbered li{ list-style: decimal; }
-
-/* rolagem elegante */
-.engrave::-webkit-scrollbar{ width: 10px; }
-.engrave::-webkit-scrollbar-thumb{
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 10px;
-}
-.engrave::-webkit-scrollbar-track{
-  background: rgba(0,0,0,.15);
-  border-radius: 10px;
-}
-
-/* responsivo */
-@media (max-width: 900px){
-  .engrave{ width: 86%; max-height: 82%; }
-}
-
