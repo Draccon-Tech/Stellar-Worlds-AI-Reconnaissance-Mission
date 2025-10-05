@@ -108,7 +108,7 @@ body{
   width: var(--size, 80px);  /* controle do tamanho aqui */
   height: auto;
   border-radius: 50%;
-  box-shadow: 0 0 0px hsla(274, 100%, 60%, 0.35);
+  box-shadow: 0 0 24px hsla(274, 100%, 60%, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
   animation: float 6s ease-in-out infinite;
 }
@@ -123,15 +123,6 @@ body{
   transform: scale(1.08);
   filter: brightness(1.2);
   box-shadow: 0 0 40px hsla(274, 100%, 60%, 0.55);
-}
-
-/* Anéis simples */
-.planet--ring::after{
-  content:""; position:absolute; inset:-18%; border-radius:50%;
-  border: 2px solid hsla(var(--violet)/.35);
-  transform: rotate(25deg);
-  box-shadow: 0 0 22px hsla(var(--violet)/.25);
-  pointer-events:none;
 }
 
 /* ===== Tooltip ===== */
