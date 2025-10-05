@@ -12,14 +12,11 @@
   <script src="apiService.js" defer></script>
 </head>
 <body>
-  <!-- NAV BAR TRANSPARENTE -->
+  <!-- NAV BAR -->
   <header class="topbar">
     <div class="topbar__left">
-      <!-- LOGO: troque por <img src="assets/logo.svg" alt="SWARM" class="logo-img" /> se tiver um arquivo -->
       <a href="manifesto.html" class="logo" aria-label="Manifesto do Swarm">
         <img src="./assets/logo-img.png" alt="SWARM" class="logo-img">
-      </a>
-      </a>
       </a>
       <nav class="nav">
         <a href="https://www.stellarworldsai.earth" class="nav__link">Home</a>
@@ -32,18 +29,21 @@
     </div>
   </header>
 
-  <!-- FUNDO -->
-  <div class="starfield" aria-hidden="true">
-    <div class="bg"></div>
-    <canvas id="stars"></canvas>
-    <div class="vignette"></div>
-  </div>
-<main class="scene" id="scene" aria-label="Mapa estelar interativo">
-</main>
+  <!-- CENA PRINCIPAL (starfield + planetas) -->
+  <main id="visual" class="scene">
+    <!-- Fundo / starfield -->
+    <div class="starfield" aria-hidden="true">
+      <div class="bg"></div>
+      <canvas id="stars"></canvas>
+      <div class="vignette"></div>
+    </div>
 
+    <!-- Camada onde o app.js injeta os planetas (imgs ou canvas) -->
+    <div id="planet-layer" class="planet-layer" aria-live="polite"></div>
 
-  <!-- TOOLTIP / HUD -->
-  <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+    <!-- Tooltip / HUD (fica dentro do main para z-index correto) -->
+    <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+  </main>
 
   <!-- MODAL JOIN -->
   <dialog id="joinModal" class="modal">
@@ -60,6 +60,15 @@
     </form>
   </dialog>
 
+  <!-- SCRIPTS -->
+  <script>
+    // Se o seu app usa outro seletor, ajuste aqui:
+    window.SWARM_CONFIG = {
+      planetMountSelector: '#planet-layer', // onde criar/inserir os planetas
+      starsCanvasId: 'stars',               // canvas do starfield
+      tooltipSelector: '#tooltip'
+    };
+  </script>
   <script src="app.js"></script>
 </body>
 </html>
