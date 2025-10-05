@@ -340,3 +340,86 @@ body{
   .lat-row{ grid-template-columns: 1fr; }
   .roles-grid{ grid-template-columns: 1fr; }
 }
+/* ===== ABOUT PAGE ===== */
+.about-center{
+  position: relative;
+  z-index: 15;
+  min-height: calc(100vh - 72px);
+  margin-top: 72px;
+  display: grid;
+  gap: clamp(16px, 3vw, 28px);
+  padding: clamp(16px, 5vw, 64px);
+}
+
+.about-hero h1{
+  font-family: Inter, system-ui, sans-serif;
+  font-size: clamp(28px, 2.8vw + 12px, 52px);
+  letter-spacing: .04em; margin: 0 0 .3rem;
+}
+.about-hero .brand{ color:#ffd77a; }
+.about-hero .lead{ max-width: 90ch; color:#e8dcc4; }
+
+.about-card{
+  background: hsl(0 0% 0% / .38);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  padding: clamp(16px, 2.6vw, 28px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.45);
+}
+.about-card h2{ margin: 0 0 .6rem; color:#ffe8b8; }
+
+/* Team */
+.team-grid{
+  display:grid; gap:12px;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+}
+.member{
+  background: hsl(0 0% 0% / .30);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px; padding: 14px;
+  display:grid; gap:6px; text-align: left;
+}
+.member .avatar{
+  width: 100%; aspect-ratio: 1/1; object-fit: cover;
+  border-radius: 12px; filter: brightness(.95) contrast(1.05);
+}
+.member h3{ margin:.4rem 0 0; }
+.member .role{ color:#cbbfa5; margin:0; }
+.member .bio{ margin:.2rem 0 0; color:#e8dcc4; }
+.member .links{ display:flex; gap:10px; flex-wrap:wrap; }
+.member .links a{
+  color:#fff; text-decoration:none;
+  border-bottom:1px dashed rgba(255,255,255,.3);
+}
+.member .links a:hover{ color:#ffd77a; border-color:#ffd77a; }
+
+/* Values */
+.values .value-list{ margin:.4rem 0 0; display:grid; gap:.4rem; }
+
+/* Timeline */
+.timeline{
+  margin:.4rem 0 0; padding-left:1.2rem; display:grid; gap:.4rem;
+}
+.timeline span{
+  color:#ffd77a; font-weight:800; margin-right:.35rem;
+}
+
+/* Contact */
+.contact-grid{
+  display:flex; gap:10px; flex-wrap:wrap; margin-top:.4rem;
+}
+.contact-pill{
+  padding:8px 12px; border-radius:999px; text-decoration:none; color:#fff;
+  border:1px solid rgba(255,255,255,.18);
+  background: hsl(0 0% 0% / .24);
+}
+.contact-pill:hover{ border-color:#ffd77a; color:#ffd77a; }
+
+/* Responsivo */
+@media (max-width: 1100px){
+  .team-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px){
+  .team-grid{ grid-template-columns: 1fr; }
+}
