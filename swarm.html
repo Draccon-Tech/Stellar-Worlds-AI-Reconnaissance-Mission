@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="page--swarm">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SWARM • Explorando Exoplanetas com I.A Autônoma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/android-chrome-512x512.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+  <link rel="manifest" href="./assets/site.webmanifest">
+</head>
+<body>
+  <!-- NAV BAR -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <a class="logo" href="manifesto.html" aria-label="Manifesto do Swarm">
+        <img src="./assets/logo-img.png" alt="SWARM" class="logo-img">
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="swarm.html" class="nav__link nav__link--active">Swarm</a>
+        <a href="#" class="nav__link">About Us</a>
+      </nav>
+    </div>
+    <div class="topbar__right">
+      <button class="cta" id="ctaJoin">JOIN THE SWARM</button>
+    </div>
+  </header>
+
+  <!-- FUNDO -->
+  <div class="starfield" aria-hidden="true">
+    <div class="bg"></div>
+    <canvas id="stars"></canvas>
+    <div class="vignette"></div>
+  </div>
+  <canvas id="meteorRing" aria-hidden="true"></canvas>
+
+  <!-- CONTEÚDO -->
+  <main class="swarm-center">
+    <!-- MINIMAPA: NOVA Route Optimizer -->
+        <section class="swarm-card">
+        <h2>NOVA Route Optimizer</h2>
+        <p class="muted">Compare a rota convencional (linha direta) com a rota otimizada da NOVA (saltos por relays/autonomia na borda). A latência é estimada; NOVA reduz ida-e-volta ao decidir e comprimir na borda.</p>
+
+        <div class="route-ui">
+            <div class="route-controls">
+            <label>Origin
+                <select id="routeOrigin"></select>
+            </label>
+            <label>Destination
+                <select id="routeDest"></select>
+            </label>
+            <button id="routeShuffle" class="ghost">Shuffle</button>
+            <label class="chk"><input type="checkbox" id="showConventional" checked> Show Conventional</label>
+            <label class="chk"><input type="checkbox" id="showNOVA" checked> Show NOVA</label>
+            <button id="routePlay" class="primary">Play</button>
+            <button id="routeStop" class="ghost">Stop</button>
+            </div>
+
+            <div class="route-stats">
+            <div class="stat">
+                <div class="k">Conventional RTT</div>
+                <div class="v"><span id="rttConventional">—</span> ms</div>
+            </div>
+            <div class="stat">
+                <div class="k">NOVA RTT (effective)</div>
+                <div class="v gold"><span id="rttNOVA">—</span> ms</div>
+            </div>
+            <div class="stat">
+                <div class="k">Hops (NOVA)</div>
+                <div class="v"><span id="hopsNOVA">—</span></div>
+            </div>
+            </div>
+        </div>
+
+        <canvas id="routeMap" width="900" height="520" aria-label="Minimap de rotas e saltos"></canvas>
+        <p class="micro muted">Modelo ilustrativo: c ≈ 299,792 km/s; NOVA aplica decisões on-edge/compactação/roteamento (fator efetivo ≈ 0.35) e escolhe múltiplos saltos por nós do enxame para reduzir o RTT percebido.</p>
+        </section>
+    <!-- HERO -->
+    <section class="swarm-hero">
+      <h1>Autonomous Exoplanet Exploration</h1>
+      <p class="lead">AION, EXON, NOVA e EIRYA operam como um enxame inteligente de baixa latência: detectam, analisam, protegem e sincronizam conhecimento em tempo quase real — no espaço profundo.</p>
+    </section>
+
+    <!-- DIAGRAMA DA REDE SWARM -->
+    <section class="swarm-card">
+      <h2>How SWARM Communicates</h2>
+      <p class="muted">EIRYA (core/servidor) orquestra a malha; NOVA media o tráfego e reduz ida-e-volta; AION coleta e cataloga; EXON protege e corrige. As setas pulsantes mostram a troca contínua.</p>
+
+      <div class="mesh-wrap">
+        <!-- SVG do grafo com pulsos -->
+        <svg class="mesh" viewBox="0 0 600 380" role="img" aria-label="Rede entre AION, EXON, NOVA e EIRYA">
+          <!-- links -->
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"  stop-color="rgba(255,220,150,0.1)"/>
+              <stop offset="100%" stop-color="rgba(255,220,150,0.7)"/>
+            </linearGradient>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="5.5" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="rgba(255,220,150,0.8)"/>
+            </marker>
+          </defs>
+
+          <!-- EIRYA centro -->
+          <circle cx="300" cy="190" r="52" class="node eirya"/>
+          <text x="300" y="195" class="label">EIRYA</text>
+          <text x="300" y="215" class="sublabel">Core / Network</text>
+
+          <!-- AION topo-esq -->
+          <circle cx="140" cy="90" r="40" class="node aion"/>
+          <text x="140" y="95" class="label">AION</text>
+          <text x="140" y="115" class="sublabel">Explore</text>
+
+          <!-- EXON topo-dir -->
+          <circle cx="460" cy="90" r="40" class="node exon"/>
+          <text x="460" y="95" class="label">EXON</text>
+          <text x="460" y="115" class="sublabel">Security</text>
+
+          <!-- NOVA base -->
+          <circle cx="300" cy="310" r="44" class="node nova"/>
+          <text x="300" y="315" class="label">NOVA</text>
+          <text x="300" y="335" class="sublabel">Mediator</text>
+
+          <!-- arestas (dupla via) -->
+          <g class="edges">
+            <line x1="300" y1="190" x2="140" y2="90"  class="edge"/>
+            <line x1="140" y1="90"  x2="300" y2="190" class="edge" marker-end="url(#arrow)"/>
+            <line x1="300" y1="190" x2="460" y2="90"  class="edge"/>
+            <
