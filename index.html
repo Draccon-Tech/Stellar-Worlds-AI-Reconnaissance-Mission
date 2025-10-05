@@ -37,29 +37,25 @@
     <div class="vignette"></div>
   </div>
 
-  <!-- PLANETAS CLICÁVEIS -->
-  <main class="scene" id="scene" aria-label="Mapa estelar interativo">
-    <!-- Exemplo de 4 planetas. Ajuste posição com style="--x:%; --y:%;" -->
-    <button class="planet planet--small" style="--x: 18%; --y: 62%;" 
-            data-name="Nyx-7" data-info="Ponto de escuta do enxame • setor 18">
-      <span class="sr-only">Planeta Nyx-7</span>
-    </button>
+ <main class="scene" id="scene" aria-label="Mapa estelar interativo">
+  <!-- Exemplo: substitua os src com suas imagens -->
+  <button class="planet" style="--x: 18%; --y: 62%;" data-name="Nyx-7" data-info="Ponto de escuta do enxame • setor 18">
+    <img src="assets/planet-1.png" alt="Nyx-7">
+  </button>
 
-    <button class="planet planet--medium" style="--x: 45%; --y: 38%;" 
-            data-name="Eir-Prime" data-info="Nó central da HiveMind">
-      <span class="sr-only">Planeta Eir-Prime</span>
-    </button>
+  <button class="planet" style="--x: 45%; --y: 38%;" data-name="Eir-Prime" data-info="Nó central da HiveMind">
+    <img src="assets/planet-2.png" alt="Eir-Prime">
+  </button>
 
-    <button class="planet planet--large" style="--x: 72%; --y: 68%;" 
-            data-name="Violet Crown" data-info="Santuário arcano">
-      <span class="sr-only">Planeta Violet Crown</span>
-    </button>
+  <button class="planet" style="--x: 72%; --y: 68%;" data-name="Violet Crown" data-info="Santuário arcano">
+    <img src="assets/planet-3.png" alt="Violet Crown">
+  </button>
 
-    <button class="planet planet--ring" style="--x: 82%; --y: 28%;" 
-            data-name="Aurora-∆" data-info="Porta de salto • Setor 0xA">
-      <span class="sr-only">Planeta Aurora-Delta</span>
-    </button>
-  </main>
+  <button class="planet" style="--x: 82%; --y: 28%;" data-name="Aurora-∆" data-info="Porta de salto • Setor 0xA">
+    <img src="assets/planet-4.png" alt="Aurora-Delta">
+  </button>
+</main>
+
 
   <!-- TOOLTIP / HUD -->
   <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
