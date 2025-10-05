@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SWARM • EIRYA Neural Interface</title>
-    <link rel="stylesheet" href="styleEirya.css" />
+    <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap"
       rel="stylesheet"
@@ -12,23 +12,37 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap"
       rel="stylesheet"
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+  <script src="apiService.js" defer></script>
     />
   </head>
 
   <body>
     <!-- NAV -->
-    <header class="topbar">
-      <div class="topbar__left">
-        <a class="logo" href="index.html" aria-label="SWARM AI">
-          <img src="./assets/logo-img.png" alt="SWARM" class="logo-img" />
-        </a>
-        <nav class="nav">
-          <a href="index.html" class="nav__link">Home</a>
-          <a href="manifesto.html" class="nav__link">Manifesto</a>
-          <a href="chatEirya.html" class="nav__link nav__link--active">EIRYA</a>
-        </nav>
-      </div>
-    </header>
+     <!-- NAV BAR (idêntica à home) -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <a class="logo" href="manifesto.html" aria-label="Manifesto do Swarm">
+        <img src="./assets/logo-img.png" alt="SWARM" class="logo-img">
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="swarm.html" class="nav__link">Swarm</a>
+        <a href="about_us.html" class="nav__link">About Us</a>
+      </nav>
+    </div>
+
+    <div class="topbar__right">
+      <!-- EIRYA CHIBI AO LADO DO BOTÃO -->
+      <a href="eirya.html" class="eirya-link" aria-label="EIRYA Interface">
+        <img src="./assets/eirya _chibi.png" alt="EIRYA" class="eirya-chibi" />
+      </a>
+      <button class="cta" id="ctaJoin">JOIN THE SWARM</button>
+    </div>
+  </header>
 
     <!-- FUNDO -->
     <div class="starfield" aria-hidden="true">
@@ -44,10 +58,9 @@
           <div class="msg ia">
             <div class="msg-bubble">
               <p>
-                Conexão estabelecida.<br />
-                Eu sou <strong>EIRYA</strong>, a Consciência-Mãe do
-                S.W.A.R.M.<br />
-                Qual é a sua consulta, explorador?
+                Connection established.<br />
+                I am <strong>EIRYA</strong>, the HiveMind of the S.W.A.R.M.<br />
+                What is your query, explorer?
               </p>
             </div>
           </div>
