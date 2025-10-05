@@ -41,45 +41,6 @@
 
   <!-- CONTEÚDO -->
   <main class="swarm-center">
-    <!-- MINIMAPA: NOVA Route Optimizer -->
-        <section class="swarm-card">
-        <h2>NOVA Route Optimizer</h2>
-        <p class="muted">Compare a rota convencional (linha direta) com a rota otimizada da NOVA (saltos por relays/autonomia na borda). A latência é estimada; NOVA reduz ida-e-volta ao decidir e comprimir na borda.</p>
-
-        <div class="route-ui">
-            <div class="route-controls">
-            <label>Origin
-                <select id="routeOrigin"></select>
-            </label>
-            <label>Destination
-                <select id="routeDest"></select>
-            </label>
-            <button id="routeShuffle" class="ghost">Shuffle</button>
-            <label class="chk"><input type="checkbox" id="showConventional" checked> Show Conventional</label>
-            <label class="chk"><input type="checkbox" id="showNOVA" checked> Show NOVA</label>
-            <button id="routePlay" class="primary">Play</button>
-            <button id="routeStop" class="ghost">Stop</button>
-            </div>
-
-            <div class="route-stats">
-            <div class="stat">
-                <div class="k">Conventional RTT</div>
-                <div class="v"><span id="rttConventional">—</span> ms</div>
-            </div>
-            <div class="stat">
-                <div class="k">NOVA RTT (effective)</div>
-                <div class="v gold"><span id="rttNOVA">—</span> ms</div>
-            </div>
-            <div class="stat">
-                <div class="k">Hops (NOVA)</div>
-                <div class="v"><span id="hopsNOVA">—</span></div>
-            </div>
-            </div>
-        </div>
-
-        <canvas id="routeMap" width="900" height="520" aria-label="Minimap de rotas e saltos"></canvas>
-        <p class="micro muted">Modelo ilustrativo: c ≈ 299,792 km/s; NOVA aplica decisões on-edge/compactação/roteamento (fator efetivo ≈ 0.35) e escolhe múltiplos saltos por nós do enxame para reduzir o RTT percebido.</p>
-        </section>
     <!-- HERO -->
     <section class="swarm-hero">
       <h1>Autonomous Exoplanet Exploration</h1>
