@@ -87,4 +87,5 @@
   let pool = [...cfg.planetImages];
   let consumed = [];
 
-  function
+  
+}) 
