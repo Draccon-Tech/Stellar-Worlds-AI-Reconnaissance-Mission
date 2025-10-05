@@ -1,92 +1,90 @@
+/* ===================== S.W.A.R.M — PLANETS LAYER ===================== */
+/* Requisitos de HTML/CSS:
+   - Container para montar planetas: <div id="planet-layer" class="planet-layer"></div>
+   - Tooltip: <div id="tooltip" class="tooltip"></div>
+   - Modal: <dialog id="joinModal"> ... <h2> ... </h2> ... </dialog>
+   - CSS esperado para .planet:
+        .planet{ position:absolute; left:var(--x); top:var(--y); transform:translate(-50%, -50%); background:none; border:0; cursor:pointer }
+        .planet img{ display:block; width: clamp(48px, 6vw, 120px); height:auto; pointer-events:none }
+        .planet-layer{ position:absolute; inset:0; z-index:2; }
+        .starfield{ position:absolute; inset:0; z-index:1; }
+*/
 
-const mainContent = document.querySelector(".scene");
+(() => {
+  /* ---------- CONFIG ---------- */
+  const cfg = {
+    mountSelector: window.SWARM_CONFIG?.planetMountSelector || ".scene",
+    planetLayerSelector: "#planet-layer",       // preferível, se existir
+    starsCanvasId: window.SWARM_CONFIG?.starsCanvasId || "stars",
+    tooltipSelector: window.SWARM_CONFIG?.tooltipSelector || "#tooltip",
+    minDistancePct: 10,                          // distância mínima em porcentagem (como seu código original)
+    // Adicione/edite aqui suas imagens PNG com fundo transparente
+    planetImages: [
+      "assets/planets/planet-1.png",
+      "assets/planets/planet-2.png",
+      "assets/planets/planet-3.png",
+      "assets/planets/planet-4.png",
+      "assets/planets/planet-5.png",
+      "assets/planets/planet-6.png",
+      "assets/planets/planet-7.png",
+      "assets/planets/planet-8.png",
+      "assets/planets/planet-9.png",
+      "assets/planets/planet-10.png",
+    ],
+    dataUrl: "https://alessandrosamir.app.n8n.cloud/webhook/04635d76-61f7-4fa7-84bc-632e8aa47cac"
+  };
 
+  /* ---------- MONTAGEM ---------- */
+  const sceneRoot =
+    document.querySelector(cfg.planetLayerSelector) ||
+    document.querySelector(cfg.mountSelector);
 
-const coordinatePlanets = [];
-const MIN_DISTANCE = 10;
-// Cria novo elemento html planeta
-const createPlanet = (namePlanet, justify, priority) => {
-    const button = document.createElement("button");
-    const img = document.createElement("img");
+  if (!sceneRoot) {
+    console.error(
+      "[SWARM] Container de montagem não encontrado. Ajuste SWARM_CONFIG.planetMountSelector ou crie #planet-layer."
+    );
+    return;
+  }
 
-    let x, y
-    let isValid = false;
-    
-    button.classList.add("planet");
-    while (!isValid){
-        x = Math.floor(Math.random() * 100)
-        y = Math.floor(Math.random() * 100)
+  // Assegura que o container onde os planetas ficarão é absoluto para ocupar a cena
+  if (!sceneRoot.classList.contains("planet-layer")) {
+    sceneRoot.classList.add("planet-layer");
+  }
+  if (getComputedStyle(sceneRoot).position === "static") {
+    sceneRoot.style.position = "absolute";
+    sceneRoot.style.inset = "0";
+    sceneRoot.style.zIndex = "2";
+  }
 
-        isValid = coordinatePlanets.every(([px, py]) => {
-            const dx = x - px;
-            const dy = y - py;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            return distance >= MIN_DISTANCE
-        })
+  /* ---------- TOOLTIP ---------- */
+  const tooltip =
+    document.querySelector(cfg.tooltipSelector) ||
+    (() => {
+      const t = document.createElement("div");
+      t.id = cfg.tooltipSelector.replace("#", "");
+      t.className = "tooltip";
+      document.body.appendChild(t);
+      return t;
+    })();
 
-        if (coordinatePlanets.length === 0) isValid = true
+  let tooltipVisible = false;
+  function showTooltip(x, y, title, body) {
+    tooltip.style.left = `${Math.round(x)}px`;
+    tooltip.style.top = `${Math.round(y)}px`;
+    tooltip.innerHTML = `
+      <strong style="color:var(--gold, #f7c948)">${title ?? "—"}</strong>
+      <div style="color:rgba(255,255,255,.78);font-size:12px;white-space:pre-line">${body ?? ""}</div>
+    `;
+    tooltip.style.display = "block";
+    tooltipVisible = true;
+  }
+  function hideTooltip() {
+    tooltip.style.display = "none";
+    tooltipVisible = false;
+  }
 
-    }
+  /* ---------- POOL DE IMAGENS (sem repetição simultânea) ---------- */
+  let pool = [...cfg.planetImages];
+  let consumed = [];
 
-    coordinatePlanets.push([x, y]);
-    
-
-    button.style.setProperty("--x", `${x}%`)
-    button.style.setProperty("--y", `${y}%`)
-
-    button.setAttribute("data-name" , `${namePlanet}`)
-    button.setAttribute("data-info" , `Justify: ${justify} \nPriority Level: ${priority}`)
-
-    const imagePathList = ["assets/planet-1.png", "assets/planet-3.png", "assets/planet-4.png"]
-    const pathImage = imagePathList[Math.floor(Math.random() * imagePathList.length)]
-    img.src = pathImage
-
-    button.appendChild(img)
-    mainContent.appendChild(button);
-}
-
-// Fetch dos dados dos planetas processados
-
-const getDataPlanets = async () => {
-    try{
-    const response = await fetch("https://alessandrosamir.app.n8n.cloud/webhook/04635d76-61f7-4fa7-84bc-632e8aa47cac")
-    const data = await response.json()
-    return data
-    } catch (error) {
-        console.error("Ocorreu um erro ao resgatar os dados: ", error)
-    }
-} 
-
-(async() => {
-    const data = await getDataPlanets();
-    console.log(data);
-    data.forEach((planet) => {
-        const planetName = planet.nome;
-        const justify = planet.justificativa_cientifica[0];
-        const priority = planet.codigo_prioridade;
-
-        if(!planetName) return;
-
-        createPlanet(planetName, justify, priority);
-        document.querySelectorAll('.planet').forEach(p => {
-  // Hover → tooltip
-  p.addEventListener('pointerenter', (e)=>{
-    const r = p.getBoundingClientRect();
-    showTooltip(r.left + r.width/2, r.top, p.dataset.name, p.dataset.info);
-  });
-  p.addEventListener('pointermove', (e)=>{
-    if(!tooltipVisible) return;
-    showTooltip(e.clientX, e.clientY, p.dataset.name, p.dataset.info);
-  });
-  p.addEventListener('pointerleave', hideTooltip);
-
-  // Clique → ação (exemplo: abrir modal com dados do planeta)
-  p.addEventListener('click', ()=>{
-    const modal = document.getElementById('joinModal');
-    const title = modal.querySelector('h2');
-    title.textContent = `Join — ${p.dataset.name}`;
-    modal.showModal();
-  });
-});
-    })
-})();
+  function
