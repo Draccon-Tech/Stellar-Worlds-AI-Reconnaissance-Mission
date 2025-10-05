@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="page--chat">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SWARM • EIRYA Neural Interface</title>
+    <link rel="stylesheet" href="styleEirya.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- NAV -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <a class="logo" href="index.html" aria-label="SWARM AI">
+          <img src="./assets/logo-img.png" alt="SWARM" class="logo-img" />
+        </a>
+        <nav class="nav">
+          <a href="index.html" class="nav__link">Home</a>
+          <a href="manifesto.html" class="nav__link">Manifesto</a>
+          <a href="chatEirya.html" class="nav__link nav__link--active">EIRYA</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- FUNDO -->
+    <div class="starfield" aria-hidden="true">
+      <div class="bg"></div>
+      <canvas id="stars"></canvas>
+      <div class="vignette"></div>
+    </div>
+
+    <!-- CHAT -->
+    <main class="chat-center">
+      <section class="chat-card">
+        <div id="chatMessages" class="chat-messages">
+          <div class="msg ia">
+            <div class="msg-bubble">
+              <p>
+                Conexão estabelecida.<br />
+                Eu sou <strong>EIRYA</strong>, a Consciência-Mãe do
+                S.W.A.R.M.<br />
+                Qual é a sua consulta, explorador?
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <form id="chatForm" class="chat-input" autocomplete="off">
+          <input
+            type="text"
+            id="userInput"
+            placeholder="Digite sua mensagem..."
+            required
+          />
+          <button type="submit" class="cta send-btn">Enviar</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="about-footer">
+      <p>© 2025 Draccon Tech — SWARM Neural Interface</p>
+    </footer>
+
+    <script>
+      // ⚙️ URL do seu webhook do n8n
+      const N8N_WEBHOOK_URL =
+        "https://alessandrosamir.app.n8n.cloud/webhook-test/5db2c1f1-ca57-4d90-9e85-2b53c395c214";
+
+      const form = document.getElementById("chatForm");
+      const input = document.getElementById("userInput");
+      const chat = document.getElementById("chatMessages");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+
+        // Mensagem do usuário
+        const userMsg = document.createElement("div");
+        userMsg.className = "msg user";
+        userMsg.innerHTML = `<div class="msg-bubble"><p>${text}</p></div>`;
+        chat.appendChild(userMsg);
+        input.value = "";
+        chat.scrollTop = chat.scrollHeight;
+
+        // Placeholder de EIRYA
+        const aiMsg = document.createElement("div");
+        aiMsg.className = "msg ia";
+        aiMsg.innerHTML = `<div class="msg-bubble"><em>EIRYA processando sinal...</em></div>`;
+        chat.appendChild(aiMsg);
+        chat.scrollTop = chat.scrollHeight;
+
+        try {
+          const res = await fetch(N8N_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text }),
+          });
+
+          const data = await res.json();
+          const reply = data.reply || "⚠️ Nenhuma resposta recebida.";
+
+          // Atualiza a resposta
+          aiMsg.innerHTML = `<div class="msg-bubble"><p>${reply}</p></div>`;
+        } catch (err) {
+          aiMsg.innerHTML = `<div class="msg-bubble"><p>❌ Erro ao conectar com EIRYA.</p></div>`;
+          console.error(err);
+        }
+
+        chat.scrollTop = chat.scrollHeight;
+      });
+    </script>
+  </body>
+</html>
