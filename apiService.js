@@ -49,7 +49,7 @@ const createPlanet = (namePlanet, justify, priority) => {
 
 const getDataPlanets = async () => {
     try{
-    const response = await fetch("https://alessandrosamir.app.n8n.cloud/webhook-test/04635d76-61f7-4fa7-84bc-632e8aa47cac")
+    const response = await fetch("https://alessandrosamir.app.n8n.cloud/webhook/04635d76-61f7-4fa7-84bc-632e8aa47cac")
     const data = await response.json()
     return data
     } catch (error) {
