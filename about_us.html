@@ -1,33 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="page--about">
+<html lang="en" class="page--about">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SWARM • About Us — Draccon Tech</title>
-
-  <!-- Fonts + CSS principal -->
+  <title>SWARM • About Us</title>
+  <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-
-  <!-- Icons / PWA -->
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/android-chrome-512x512.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
   <link rel="manifest" href="./assets/site.webmanifest">
 </head>
+
 <body>
   <!-- NAV BAR -->
   <header class="topbar">
     <div class="topbar__left">
-      <a class="logo" href="manifesto.html" aria-label="Manifesto do Swarm">
+      <a class="logo" href="manifesto.html" aria-label="SWARM Manifesto">
         <img src="./assets/logo-img.png" alt="SWARM" class="logo-img">
       </a>
       <nav class="nav">
         <a href="index.html" class="nav__link">Home</a>
         <a href="swarm.html" class="nav__link">Swarm</a>
-        <a href="about_us.html" class="nav__link nav__link--active">About Us</a>
+        <a href="about_us.html" class="nav__link active">About Us</a>
       </nav>
     </div>
     <div class="topbar__right">
@@ -35,50 +32,92 @@
     </div>
   </header>
 
-  <!-- FUNDO -->
+  <!-- BACKGROUND -->
   <div class="starfield" aria-hidden="true">
     <div class="bg"></div>
     <canvas id="stars"></canvas>
     <div class="vignette"></div>
   </div>
-  <canvas id="meteorRing" aria-hidden="true"></canvas>
 
-  <!-- CONTEÚDO -->
+  <!-- MAIN CONTENT -->
   <main class="about-center">
+
     <!-- HERO -->
     <section class="about-hero">
       <h1>We are <span class="brand">Draccon Tech</span></h1>
-      <p class="lead">Equipe participante do Hackathon. Construímos o <strong>SWARM</strong>: um ecossistema de IAs autônomas para explorar, proteger e comunicar descobertas sobre exoplanetas — em baixa latência, no espaço profundo.</p>
+      <p class="lead">
+        A multidisciplinary team participating in the Hackathon.  
+        We built <strong>SWARM</strong> — an autonomous AI ecosystem designed to 
+        <em>explore exoplanets</em>, <em>secure communications</em>, and <em>synchronize knowledge</em> 
+        with near-zero latency across deep space.
+      </p>
     </section>
 
-    <!-- MISSÃO -->
+    <!-- MISSION -->
     <section class="about-card">
       <h2>Our Mission</h2>
-      <p>Unir ciência de dados, engenharia e design para acelerar a descoberta de exoplanetas e tornar o conhecimento acessível em tempo quase real. Com <strong>EIRYA</strong> (core/backbone), <strong>NOVA</strong> (mediação/roteamento), <strong>AION</strong> (exploração & catálogo) e <strong>EXON</strong> (segurança & autocorreção), o SWARM transforma sinais em significado.</p>
+      <ul class="value-list">
+        <li>Transform stellar signals into actionable knowledge in near real time.</li>
+        <li>Bridge data science, engineering, and design for responsible exploration.</li>
+        <li>Reduce latency through autonomous edge computation and intelligent mediation.</li>
+      </ul>
     </section>
 
-    <!-- TIME -->
+    <!-- WHAT IS SWARM -->
     <section class="about-card">
-      <h2>Team Draccon Tech</h2>
+      <h2>What is SWARM</h2>
+      <p>SWARM operates as a mesh of four artificial intelligences, working in harmony as a single collective mind:</p>
+      <div class="roles-grid">
+        <article class="role aion">
+          <h3>AION</h3>
+          <p>Exploration & Catalog — spectral scans, mapping, and planetary prioritization.</p>
+        </article>
+        <article class="role exon">
+          <h3>EXON</h3>
+          <p>Security & Self-Heal — adaptive firewall, data integrity, and noise correction.</p>
+        </article>
+        <article class="role nova">
+          <h3>NOVA</h3>
+          <p>Mediation & Routing — optimizes traffic, minimizes round-trip latency, and sends logs to base.</p>
+        </article>
+        <article class="role eirya">
+          <h3>EIRYA</h3>
+          <p>Core & Backbone — network server, model distributor, and global state synchronizer.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="about-card">
+      <h2>How it Works</h2>
+      <ol class="timeline">
+        <li><span>1.</span> <strong>Detection (AION):</strong> Scans systems, identifies candidates, and builds dossiers.</li>
+        <li><span>2.</span> <strong>Protection (EXON):</strong> Validates packets, filters anomalies, and self-corrects errors.</li>
+        <li><span>3.</span> <strong>Routing (NOVA):</strong> Decides what stays at the edge, compresses data, and optimizes communication paths.</li>
+        <li><span>4.</span> <strong>Consensus (EIRYA):</strong> Consolidates knowledge, version-controls models, and replicates the swarm’s neural network.</li>
+      </ol>
+    </section>
+
+    <!-- WHY IT MATTERS -->
+    <section class="about-card">
+      <h2>Why it Matters</h2>
+      <ul class="value-list">
+        <li><strong>Lower latency:</strong> Decisions occur closer to the source, reducing communication delay.</li>
+        <li><strong>Higher resilience:</strong> Secure data transmission even under cosmic radiation or noise.</li>
+        <li><strong>Scalable intelligence:</strong> Multiple nodes operate in parallel, synchronized through EIRYA.</li>
+        <li><strong>Open science:</strong> Transparent trails, reproducible data, and accessible insights.</li>
+      </ul>
+    </section>
+
+    <!-- TEAM -->
+    <section class="about-card">
+      <h2>Team Draccon Tech (Hackathon)</h2>
       <div class="team-grid">
-        <!-- Card de membro (repita/edite conforme seu time) -->
         <article class="member">
           <img src="./assets/team/draccon.jpg" alt="Draccon" class="avatar" />
           <h3>Draccon</h3>
           <p class="role">Founder / Lead Engineer</p>
-          <p class="bio">Coordenação técnica do SWARM, arquitetura do front e integração das IAs. Definição de UX cósmica e interatividade.</p>
-          <div class="links">
-            <a href="#" aria-label="GitHub">GitHub</a>
-            <a href="#" aria-label="LinkedIn">LinkedIn</a>
-            <a href="#" aria-label="Site">Site</a>
-          </div>
-        </article>
-
-        <article class="member">
-          <img src="./assets/team/member-2.jpg" alt="Teammate 2" class="avatar" />
-          <h3>Teammate 2</h3>
-          <p class="role">Data & Infra</p>
-          <p class="bio">Pipelines de dados, ingestão NASA e modelos auxiliares para compressão/telemetria de bordo.</p>
+          <p class="bio">Architect of SWARM, front-end design, AI integration, and UX systems.</p>
           <div class="links">
             <a href="#">GitHub</a>
             <a href="#">LinkedIn</a>
@@ -86,10 +125,21 @@
         </article>
 
         <article class="member">
-          <img src="./assets/team/member-3.jpg" alt="Teammate 3" class="avatar" />
-          <h3>Teammate 3</h3>
+          <img src="./assets/team/member-2.jpg" alt="Member 2" class="avatar" />
+          <h3>Member 2</h3>
+          <p class="role">Data & Infrastructure</p>
+          <p class="bio">NASA ingestion pipelines and exoplanet telemetry processing.</p>
+          <div class="links">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+          </div>
+        </article>
+
+        <article class="member">
+          <img src="./assets/team/member-3.jpg" alt="Member 3" class="avatar" />
+          <h3>Member 3</h3>
           <p class="role">Security & Ops</p>
-          <p class="bio">Camada EXON: políticas de segurança, firewall adaptativo e autorreparo contra ruído de radiação.</p>
+          <p class="bio">EXON layer: adaptive firewall and self-repair architecture.</p>
           <div class="links">
             <a href="#">GitHub</a>
             <a href="#">LinkedIn</a>
@@ -97,82 +147,49 @@
         </article>
 
         <article class="member">
-          <img src="./assets/team/member-4.jpg" alt="Teammate 4" class="avatar" />
-          <h3>Teammate 4</h3>
+          <img src="./assets/team/member-4.jpg" alt="Member 4" class="avatar" />
+          <h3>Member 4</h3>
           <p class="role">Research & Design</p>
-          <p class="bio">Investigação de UX científica, visualização de rotas (NOVA) e storytelling da interface.</p>
+          <p class="bio">NOVA routing visualization, storytelling, and system cohesion.</p>
           <div class="links">
             <a href="#">Dribbble</a>
             <a href="#">LinkedIn</a>
           </div>
         </article>
       </div>
-      <p class="micro muted">Quer aparecer aqui com foto e links? Coloque as imagens em <code>/assets/team/</code> e atualize os perfis.</p>
-    </section>
-
-    <!-- VALORES -->
-    <section class="about-card values">
-      <h2>Values</h2>
-      <ul class="value-list">
-        <li><strong>Autonomy by Design:</strong> decisões na borda para reduzir latência e custo de comunicação.</li>
-        <li><strong>Security First:</strong> EXON como guardiã do tráfego, integridade e conformidade.</li>
-        <li><strong>Open Science:</strong> dados rastreáveis, reprodutíveis e acessíveis.</li>
-        <li><strong>Human-centered Exploration:</strong> interfaces que contam a história da descoberta.</li>
-      </ul>
+      <p class="micro muted">Team images stored in <code>/assets/team/</code>.</p>
     </section>
 
     <!-- TIMELINE -->
     <section class="about-card">
       <h2>Hackathon Timeline</h2>
       <ol class="timeline">
-        <li><span>Day 1</span> — Conceito do SWARM, arquitetura e protótipo visual.</li>
-        <li><span>Day 2</span> — Minimapa NOVA (rotas/hops) e simulação de latência.</li>
-        <li><span>Day 3</span> — Integração com NASA Exoplanet Archive e cards interativos.</li>
-        <li><span>Day 4+</span> — Refinos, manifestos multilíngues e deploy.</li>
+        <li><span>Day 1</span> — Concept, architecture, and visual prototype.</li>
+        <li><span>Day 2</span> — NOVA minimap and latency simulation.</li>
+        <li><span>Day 3</span> — NASA API integration and exoplanet cards.</li>
+        <li><span>Day 4+</span> — Refinements, multilingual support, and deploy.</li>
       </ol>
     </section>
 
-    <!-- CONTATO -->
+    <!-- CONTACT -->
     <section class="about-card contact">
       <h2>Contact</h2>
-      <p>Diga olá e venha para o enxame:</p>
       <div class="contact-grid">
         <a class="contact-pill" href="mailto:hello@draccon.tech">hello@draccon.tech</a>
-        <a class="contact-pill" href="#" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="contact-pill" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="contact-pill" href="#" target="_blank" rel="noreferrer">Twitter/X</a>
+        <a class="contact-pill" href="#" target="_blank">GitHub</a>
+        <a class="contact-pill" href="#" target="_blank">LinkedIn</a>
+        <a class="contact-pill" href="#" target="_blank">Twitter/X</a>
       </div>
     </section>
 
     <!-- CTA -->
     <section class="swarm-cta">
       <button class="cta xl" id="joinNow">Join the Mission</button>
-      <p class="micro muted">Receba relatórios de campo e novos catálogos de exoplanetas.</p>
+      <p class="micro muted">Receive field reports and new exoplanet catalogs.</p>
     </section>
+
   </main>
 
-  <!-- Modal -->
-  <dialog id="joinModal" class="modal">
-    <form method="dialog" class="modal__card">
-      <h2>Join the Swarm</h2>
-      <p>Cadastre seu e-mail para novidades.</p>
-      <label class="field">
-        <span>Email</span>
-        <input type="email" placeholder="you@domain.com" required />
-      </label>
-      <menu class="actions">
-        <button value="cancel" class="ghost">Close</button>
-        <button value="submit" class="primary">Join</button>
-      </menu>
-    </form>
-  </dialog>
-
   <script src="app.js"></script>
-  <script>
-    // abrir modal do CTA
-    const joinBtn = document.getElementById('joinNow');
-    const joinModal = document.getElementById('joinModal');
-    if(joinBtn && joinModal){ joinBtn.addEventListener('click', ()=> joinModal.showModal()); }
-  </script>
 </body>
 </html>
