@@ -108,7 +108,7 @@ body{
   width: var(--size, 80px);  /* controle do tamanho aqui */
   height: auto;
   border-radius: 50%;
-  box-shadow: 0 0 24px hsla(274, 100%, 60%, 0.35);
+  box-shadow: 0 0 0px hsla(274, 100%, 60%, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
   animation: float 6s ease-in-out infinite;
 }
