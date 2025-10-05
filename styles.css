@@ -472,3 +472,29 @@ body{
   margin: 0;
   text-shadow: 0 0 6px rgba(255, 240, 190, 0.15);
 }
+/* ===== CORRIGE SCROLL GLOBAL ===== */
+html, body {
+  height: auto;
+  overflow-y: auto; /* permite rolar verticalmente */
+  overflow-x: hidden; /* impede rolagem lateral indesejada */
+  scroll-behavior: smooth; /* rolagem suave */
+}
+
+/* Corrige se algum container estiver travando o scroll */
+.starfield,
+.page--manifesto,
+.page--swarm,
+.page--about {
+  position: relative;
+  min-height: 100vh;
+  overflow: visible !important;
+}
+
+/* Garante que o conteúdo possa estender a página */
+main, section, article {
+  position: relative;
+  z-index: 5;
+}
+main {
+  padding-bottom: 6rem; /* ajustável conforme o tamanho do footer */
+}
