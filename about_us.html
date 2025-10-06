@@ -147,30 +147,6 @@
     </ul>
   </section>
 
-  <!-- SWARM OVERVIEW -->
-  <section class="about-section">
-    <h2>What is SWARM</h2>
-    <p>
-      SWARM operates as a mesh of four artificial intelligences, working in harmony as a single collective mind:
-    </p>
-    <div class="ia-grid">
-      <div class="ia-card">
-        <h3>AION</h3>
-        <p>Exploration & Catalog — spectral scans, mapping, and planetary prioritization.</p>
-      </div>
-      <div class="ia-card">
-        <h3>EXON</h3>
-        <p>Security & Self-Heal — adaptive firewall, data integrity, and noise correction.</p>
-      </div>
-      <div class="ia-card">
-        <h3>NOVA</h3>
-        <p>Mediation & Routing — optimizes traffic, minimizes round-trip latency, and sends logs to base.</p>
-      </div>
-      <div class="ia-card">
-        <h3>EIRYA</h3>
-        <p>Core & Backbone — network server, model distributor, and global state synchronizer.</p>
-      </div>
-    </div>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -183,6 +159,105 @@
       <li><strong>Consensus (EIRYA):</strong> Consolidates knowledge, version-controls models, and replicates the swarm’s neural network.</li>
     </ol>
   </section>
+
+    <!-- DATA SOURCE / API -->
+  <section class="about-section" aria-labelledby="apiTitle">
+    <h2 id="apiTitle">Data Source & API</h2>
+    <p style="color:hsl(var(--muted));max-width:900px">
+      This prototype consumes public exoplanet parameters from NASA’s Exoplanet Archive. 
+      We use the TAP endpoint below (JSON), which can be queried directly:
+    </p>
+    <p>
+      <a href="https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+pl_name,pl_rade,pl_masse,pl_eqt+from+pscomppars&format=json"
+         target="_blank" rel="noopener"
+         style="word-break:break-all; color:#ffd980; text-decoration:underline;">
+        https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+pl_name,pl_rade,pl_masse,pl_eqt+from+pscomppars&format=json
+      </a>
+    </p>
+    <details style="margin-top:10px;">
+      <summary style="cursor:pointer;color:#ffd980">Example (curl)</summary>
+      <pre style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:12px; border-radius:8px; overflow:auto;">
+curl "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+pl_name,pl_rade,pl_masse,pl_eqt+from+pscomppars&format=json"
+      </pre>
+    </details>
+  </section>
+
+  <!-- ON-ORBIT ARCHITECTURE -->
+  <section class="about-section" aria-labelledby="orbitTitle">
+    <h2 id="orbitTitle">On-Orbit Architecture: Why Four AIs (Not One)</h2>
+    <p style="color:hsl(var(--muted));max-width:900px">
+      In deep-space operations, <strong>latency</strong>, <strong>intermittent links</strong>, and <strong>radiation-induced faults</strong>
+      make ground-only processing impractical. Placing the intelligence <em>on-orbit</em> (inside satellites and edge probes)
+      enables real-time decisions under tight downlink budgets. SWARM is intentionally split into four specialized AIs
+      to maximize <strong>fault isolation</strong>, <strong>throughput</strong>, and <strong>mission assurance</strong>.
+    </p>
+
+    <div class="ia-grid" style="margin-top:16px">
+      <div class="ia-card">
+        <h3>AION — On-Board Science</h3>
+        <p>
+          Runs on the instrument bus to <strong>detect, rank, and characterize</strong> candidates in situ.
+          Performs lightweight spectral filtering, transit-curve spotting, and feature extraction close to the sensor,
+          reducing raw data volume before it ever leaves the spacecraft.
+        </p>
+        <ul>
+          <li>Minimizes downlink by sending <em>dossiers</em> instead of raw streams.</li>
+          <li>Adapts thresholds to detector noise/temperature drift.</li>
+        </ul>
+      </div>
+
+      <div class="ia-card">
+        <h3>EXON — Security & Self-Heal</h3>
+        <p>
+          The <strong>security and reliability</strong> layer. Checks packet integrity, monitors SEUs (single-event upsets),
+          and performs error correction/model rollback. Partitions faults to prevent <em>common-mode failures</em>.
+        </p>
+        <ul>
+          <li>Lightweight crypto and integrity checks on board.</li>
+          <li>Health monitoring and model/data self-repair.</li>
+        </ul>
+      </div>
+
+      <div class="ia-card">
+        <h3>NOVA — Mediation & Routing</h3>
+        <p>
+          Orchestrates <strong>traffic</strong> between nodes and ground. Decides what stays at the edge, what to compress,
+          and when to transmit based on <em>link windows</em> and available power. Keeps the mesh alive with DTN.
+        </p>
+        <ul>
+          <li>DTN-aware scheduling, compression, and store-and-forward.</li>
+          <li>QoS by science priority and constellation state.</li>
+        </ul>
+      </div>
+
+      <div class="ia-card">
+        <h3>EIRYA — HiveMind Backbone</h3>
+        <p>
+          Maintains the swarm’s <strong>global state</strong>: versions models, distributes weights, consolidates consensus
+          across nodes, and synchronizes knowledge when links allow. The <em>fabric</em> that keeps everything coherent.
+        </p>
+        <ul>
+          <li>Eventual consensus and parameter replication.</li>
+           <li>Mission-safe model rollout/rollback policies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px; color:#cba7ff;">Why Not a Single Monolithic AI?</h3>
+    <ul style="margin-top:8px;">
+      <li><strong>Fault Isolation:</strong> Domain specialization prevents a science fault from taking down security/routing.</li>
+      <li><strong>Operational determinism:</strong> Critical paths (telemetry, security) remain predictable and auditable.</li>
+      <li><strong>Real-time at the edge:</strong> AION decides at the sensor; NOVA optimizes link windows; no waiting for ground.</li>
+      <li><strong>Safe updates:</strong> EIRYA rolls versions in <em>waves</em> EXON reverts on regression.</li>
+      <li><strong>Hardware efficiency:</strong> Pipelines map cleanly to distinct <em>compute tiles</em> (CPU/GPU/FPGA/rad-hard cores).</li>
+      <li><strong>Scalability:</strong> Easier to add/remove nodes than to retrain a critical monolith.</li>
+    </ul>
+
+    <p style="color:hsl(var(--muted));margin-top:10px;max-width:900px">
+      In short:four cooperating <em>AIs</em> deliver <strong>resilience</strong>, <strong>low latency</strong> and <strong>operability</strong> versus a single monolithic agent—critical in radiation-rich, power-limited, and window-scarce environments.
+    </p>
+  </section>
+
 
   <!-- TEAM (novo) -->
   <section class="about-section section-team" aria-labelledby="teamTitle">
