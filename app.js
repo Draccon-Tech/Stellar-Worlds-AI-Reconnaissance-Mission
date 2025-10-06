@@ -31,7 +31,7 @@
   resize(); requestAnimationFrame(draw);
 })();
 
-// ===== Tooltip e cliques dos planetas =====
+// ===== Tooltip e cliques dos planetas. =====
 const tooltip = document.getElementById('tooltip');
 let tooltipVisible = false;
 

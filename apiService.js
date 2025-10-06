@@ -4,7 +4,7 @@ const imagePathList = ["assets/planets/planet-1.png", "assets/planets/planet-2.p
 
 const coordinatePlanets = [];
 const MIN_DISTANCE = 10;
-// Cria novo elemento html planeta
+// Cria novo elemento html planeta.
 const createPlanet = (namePlanet, justify, priority) => {
     const button = document.createElement("button");
     const img = document.createElement("img");

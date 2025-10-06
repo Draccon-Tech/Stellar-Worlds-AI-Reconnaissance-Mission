@@ -398,7 +398,7 @@ main{
 .actions .primary:hover{ background: hsl(var(--violet)); }
 
 /* ===========================
-   FOOTER GLOBAL
+   FOOTER GLOBAL.
 =========================== */
 .about-footer{
   text-align: center;
